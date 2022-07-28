@@ -74,7 +74,6 @@ struct DashboardTabView: View {
     }
 }
 
-
 struct CategorySum: Identifiable, Equatable {
     let sum: Double
     let category: Category
