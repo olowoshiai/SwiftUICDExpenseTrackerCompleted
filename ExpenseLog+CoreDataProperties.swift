@@ -22,7 +22,7 @@ extension ExpenseLog {
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
-
+    @NSManaged public var note: String?
 }
 
 extension ExpenseLog {
