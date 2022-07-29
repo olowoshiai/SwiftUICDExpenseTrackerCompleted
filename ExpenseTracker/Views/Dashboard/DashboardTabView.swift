@@ -87,3 +87,16 @@ struct DashboardTabView_Previews: PreviewProvider {
         DashboardTabView()
     }
 }
+
+struct CurrencyButtonView: View {
+    
+    var isUSD: Bool
+    var onTap: (Category) -> ()
+    
+    var body: some View {
+        HStack {
+        }
+    }
+    
+    
+}
