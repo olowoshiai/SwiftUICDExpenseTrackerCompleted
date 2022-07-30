@@ -14,11 +14,12 @@ class NetworkManger {
     func POST(currencyData: Currency, completion: @escaping (Result<CurrencyResponse, CurrencyError>) -> Void) {
         guard let url = URL(string: "https://elementsofdesign.api.stdlib.com/aavia-currency-converter@dev/") else { return }
         guard let jsonData = try? JSONEncoder().encode(currencyData) else {
-                 print("Error: Trying to convert model to JSON data")
+            completion(.failure(.requestError))
                  return
              }
         
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+       // var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData) // NEED CACHE
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -36,10 +37,11 @@ class NetworkManger {
             }
             
             do {
-                //completion(.success(<#T##CurrencyResponse#>))
+                let currencyConverted = try JSONDecoder().decode(CurrencyResponse.self, from: data)
+                completion(.success(currencyConverted))
                 
             } catch {
-                //completion(.failure(.requestError))
+                completion(.failure(.requestError))
                 return
             }
             

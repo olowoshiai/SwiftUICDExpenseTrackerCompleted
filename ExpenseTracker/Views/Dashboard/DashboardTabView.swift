@@ -16,6 +16,8 @@ struct DashboardTabView: View {
     
     @State var totalExpenses: Double?
     @State var categoriesSum: [CategorySum]?
+    @State var isUSDCurrency = true
+    @State var selectedCurrency: CurrencyType = .usd
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,6 +43,14 @@ struct DashboardTabView: View {
                 }
                 
                 Divider()
+                
+                // Currency Picker
+                Picker ("Currency", selection: $selectedCurrency) {
+                    Text(CurrencyType.usd.rawValue).tag(CurrencyType.usd)
+                    Text(CurrencyType.eur.rawValue).tag(CurrencyType.eur)
+                }
+                .pickerStyle(.segmented)
+                .padding()
 
                 List {
                     Text("Breakdown").font(.headline)
@@ -88,15 +98,7 @@ struct DashboardTabView_Previews: PreviewProvider {
     }
 }
 
-struct CurrencyButtonView: View {
-    
-    var isUSD: Bool
-    var onTap: (Category) -> ()
-    
-    var body: some View {
-        HStack {
-        }
-    }
-    
-    
+enum CurrencyType: String {
+    case usd = "USD"
+    case eur = "EUR"
 }
