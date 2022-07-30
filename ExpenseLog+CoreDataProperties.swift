@@ -2,7 +2,7 @@
 //  ExpenseLog+CoreDataProperties.swift
 //  ExpenseTracker
 //
-//  Created by Aishat Olowoshile on 7/27/22.
+//  Created by Aisha on 7/27/22.
 //  Copyright © 2022 Alfian Losari. All rights reserved.
 //
 //
